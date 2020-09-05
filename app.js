@@ -12,7 +12,7 @@ const schema = yup.object().shape({
     url: yup.string().trim().url().required()
 })
 
-const db = monk('mongodb+srv://hairy:1337@hairy.gvxpi.mongodb.net/Hairy?retryWrites=true&w=majority')
+const db = monk("mongodb+srv://hairy:1337@hairy.gvxpi.mongodb.net/Hairy?retryWrites=true&w=majority")
 const urls = db.get('urls')
 urls.createIndex({ alias: 1 }, { unique: true })
 
