@@ -5,7 +5,6 @@ const helmet = require('helmet')
 const yup = require('yup')
 const monk = require('monk')
 const { nanoid } = require('nanoid')
-require('dotenv').config()
 
 const schema = yup.object().shape({
     alias: yup.string().trim().matches(/[\w\-]/),
@@ -74,3 +73,5 @@ app.use((error, req, res, next) => {
         message: error.message
     })
 })
+
+app.listen(process.env.PORT)
