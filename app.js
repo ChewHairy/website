@@ -11,6 +11,7 @@ const schema = yup.object().shape({
     url: yup.string().trim().url().required()
 })
 
+//const db = monk(process.env.MONGO_URI)
 const db = monk("mongodb+srv://hairy:1337@hairy.gvxpi.mongodb.net/Hairy?retryWrites=true&w=majority")
 const urls = db.get('urls')
 urls.createIndex({ alias: 1 }, { unique: true })
@@ -74,4 +75,6 @@ app.use((error, req, res, next) => {
     })
 })
 
-app.listen(process.env.PORT)
+app.listen(process.env.PORT || 1337, () => {
+    console.log('listening, lol.')
+})
